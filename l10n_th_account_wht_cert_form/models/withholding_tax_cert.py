@@ -9,8 +9,9 @@ class WithholdingTaxCert(models.Model):
 
     def _get_report_base_filename(self):
         self.ensure_one()
-        return self.env._("WHT Certificates - {name}").format(
-            name=self.display_name or False
+        return self.env._(
+            "WHT Certificates - %(name)s",
+            name=self.display_name or False,
         )
 
     def _compute_desc_type_other(self, lines, ttype, income_type):
